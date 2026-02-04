@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>نظام تشخيص سرطان الثدي (30 ميزة)</h2>
+    <form action="/predict" method="post" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        {% for feature in features %}
+            <div style="text-align: right;">
+                <label style="font-size: 12px;">{{ feature }}:</label><br>
+                <input type="number" step="any" name="{{ feature }}" required style="width: 90%;">
+            </div>
+        {% endfor %}
+        
+        <div style="grid-column: span 2;">
+            <button type="submit" style="width: 100%; margin-top: 20px;">تحليل البيانات</button>
+        </div>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">النتيجة المتوقعة: {{ prediction_text }}</div>
+    {% endif %}
+</div>
